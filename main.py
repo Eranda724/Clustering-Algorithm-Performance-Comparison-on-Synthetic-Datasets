@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_moons, make_circles
 from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import (KMeans, MiniBatchKMeans, DBSCAN, AgglomerativeClustering, MeanShift, SpectralClustering, AffinityPropagation, Birch, OPTICS)
+from sklearn.cluster import (KMeans, MiniBatchKMeans, DBSCAN, AgglomerativeClustering,MeanShift, SpectralClustering, AffinityPropagation, Birch, OPTICS)
 from sklearn.mixture import GaussianMixture
 import hdbscan
 from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
