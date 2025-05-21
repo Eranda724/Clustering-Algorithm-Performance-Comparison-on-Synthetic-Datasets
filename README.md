@@ -1,121 +1,124 @@
-# Clustering Analysis Assignment
+# Clustering Algorithm Comparison
 
-This repository contains code and analysis for a machine learning assignment on clustering algorithms. The assignment explores various clustering methods and their performance on different types of datasets.
+![image](https://github.com/user-attachments/assets/7bab2d99-0d49-482f-a6d6-d95fd7335e17)
 
-## Assignment Overview
+This repository contains a comprehensive analysis and comparison of various clustering algorithms across multiple synthetic datasets. The project evaluates how different clustering techniques perform when faced with diverse data structures and geometries.
 
-The assignment involves:
+## 📊 Project Overview
 
-1. Exploring the Scikit-learn clustering comparison example
-2. Generating a combined dataset using multiple data generation methods
-3. Applying various clustering algorithms to the dataset
-4. Evaluating and comparing the performance of different algorithms
-5. Selecting and justifying the most effective algorithm
+This research compares the performance of **9 popular clustering algorithms** across **6 different synthetic datasets** using **3 evaluation metrics**. The goal is to identify which algorithms excel under specific data conditions and provide insights into their strengths and limitations.
 
-## Files in this Repository
+### Algorithms Analyzed:
+- KMeans
+- MiniBatchKMeans
+- AffinityPropagation
+- MeanShift
+- SpectralClustering
+- Agglomerative Clustering (Ward and Average linkage)
+- DBSCAN
+- HDBSCAN
+- OPTICS
+- Birch
+- GaussianMixture
 
-- `clustering_assignment.ipynb`: Jupyter notebook with detailed analysis and visualizations
-- `clustering_assignment.py`: Python script version of the same analysis
-- `README.md`: This file, providing an overview of the assignment
-- `output/`: Directory containing all generated visualization images
+### Datasets Used:
+- **Blobs**: Simple Gaussian clusters with equal variance
+- **Moons**: Two interleaving half-circles
+- **Circles**: Concentric circular clusters
+- **Aniso**: Anisotropic blobs with directional elongation
+- **Varied**: Clusters with different variances and densities
+- **No Structure**: Random points with no inherent clustering
+- **Custom Combined**: Hybrid of Moons and Circles datasets
 
-## Requirements
+### Evaluation Metrics:
+- **Silhouette Score**: Measures cluster cohesion and separation
+- **Calinski-Harabasz Index**: Evaluates ratio of between-cluster to within-cluster dispersion
+- **Davies-Bouldin Score**: Assesses average similarity between clusters
+
+## 🖼️ Key Visualizations
+
+### Dataset Structures
+![all_datasets_grid](https://github.com/user-attachments/assets/20f2416d-6be8-473e-958c-562c17adeee7)
+
+### Algorithm Performance on Moons Dataset
+![moons_all_algorithms](https://github.com/user-attachments/assets/82e843b1-313f-4b74-ae92-365b01dc3c00)
+
+### Algorithm Performance on Circles Dataset
+![circles_all_algorithms](https://github.com/user-attachments/assets/b6a2a356-b114-4ee3-a34f-0fe22c691825)
+
+### Algorithm Performance on Combined Dataset
+![combined_moons_circles_all_algorithms](https://github.com/user-attachments/assets/db2d7ed4-3e6e-4429-95b8-0ff418966680)
+
+### Performance Comparison Across All Datasets
+![best_algorithm_comparison](https://github.com/user-attachments/assets/fe157c8e-11a6-4f01-99e9-f956393f42ee)
+
+![metrics_comparison_circles](https://github.com/user-attachments/assets/0ce496ad-0ce8-4c8d-881a-a87c4003e0a7)
+
+![metrics_comparison_combined_moons_circles](https://github.com/user-attachments/assets/01fe3531-3cb4-4a46-95d7-4f09562c7403)
+
+![metrics_comparison_moons](https://github.com/user-attachments/assets/e820244f-874f-480e-89d9-ba2f2a9c9cfe)
+
+## 📈 Key Findings
+
+| Dataset | Best Algorithm(s) | Notes |
+|---------|-------------------|-------|
+| Moons | KMeans (0.67), Spectral (0.56) | Clean, compact clusters |
+| Circles | MiniBatchKMeans (0.67), AffinityPropagation | Well-separated circular structures |
+| Combined | KMeans (0.67), Spectral (0.64), Agglomerative (0.65) | Strong performance on complex shapes |
+
+- **KMeans** proves to be the most consistent performer across all datasets
+- **Spectral Clustering** and **Agglomerative Clustering** excel at handling complex, non-convex shapes
+- **DBSCAN** performs well on moon-like data but struggles with parameter sensitivity
+- **HDBSCAN** and **OPTICS** generally underperform across most datasets
+
+## 🛠️ Requirements
 
 To run the code, you need the following Python packages:
-
-- numpy
-- matplotlib
-- scikit-learn
+```
+numpy
+matplotlib
+scikit-learn
+pandas
+seaborn
+```
 
 You can install these packages using pip:
+```bash
+pip install numpy matplotlib scikit-learn pandas seaborn
+```
+
+## 📂 Repository Structure
 
 ```
-pip install numpy matplotlib scikit-learn
+.
+├── clustering_comparison.ipynb   # Jupyter notebook with detailed analysis
+├── clustering_comparison.py      # Python script version of the analysis
+├── output/                       # Directory containing visualization images
+│   ├── datasets.png              # Visualizations of all datasets
+│   ├── moons_results.png         # Results on Moons dataset
+│   ├── circles_results.png       # Results on Circles dataset
+│   └── combined_results.png      # Results on Combined dataset
+├── data/                         # Optional data files
+└── README.md                     # This file
 ```
 
-## How to Run the Code
+## 🚀 How to Run
 
 ### Using the Jupyter Notebook
-
-1. Make sure you have Jupyter installed:
-
-```
+1. Ensure you have Jupyter installed:
+```bash
 pip install jupyter
 ```
 
 2. Start Jupyter:
-
-```
+```bash
 jupyter notebook
 ```
 
-3. Open `clustering_assignment.ipynb` and run the cells in order.
+3. Open `clustering_comparison.ipynb` and run the cells in order.
 
 ### Using the Python Script
-
 Simply run the Python script:
-
+```bash
+python clustering_comparison.py
 ```
-python clustering_assignment.py
-```
-
-The script will create an `output` directory (if it doesn't exist) and save all visualization images there:
-
-- `combined_dataset.png`: Visualization of the combined dataset
-- `individual_datasets.png`: Visualizations of the individual dataset components
-- `clustering_results.png`: Results from applying different clustering algorithms
-- `best_spectral_clustering.png`: Best result from parameter tuning of Spectral Clustering
-
-## Assignment Components
-
-### 1. Introduction to Clustering
-
-The notebook includes a comprehensive introduction to clustering and its importance in machine learning, covering:
-
-- Definition and purpose of clustering
-- Types of clustering algorithms
-- Applications of clustering in real-world scenarios
-
-### 2. Summary of Clustering Methods
-
-The analysis covers several clustering algorithms:
-
-- K-Means
-- DBSCAN
-- Agglomerative Clustering
-- Mean Shift
-- Spectral Clustering
-- And others
-
-For each algorithm, the strengths, limitations, and specific use cases are discussed.
-
-### 3. Dataset Generation and Visualization
-
-The code generates a combined dataset using:
-
-- `make_blobs`: Creates spherical clusters
-- `make_moons`: Creates moon-shaped clusters
-- `make_circles`: Creates circular clusters
-
-These datasets are combined to create a complex dataset with different types of structures.
-
-### 4. Clustering Analysis and Results
-
-The analysis includes:
-
-- Application of multiple clustering algorithms
-- Evaluation using metrics such as silhouette score, Calinski-Harabasz index, and Davies-Bouldin index
-- Visual comparison of clustering results
-- Parameter tuning for the selected algorithm
-
-### 5. Algorithm Selection and Justification
-
-The notebook provides a detailed justification for selecting the most effective clustering algorithm based on:
-
-- Performance metrics
-- Visual inspection of clusters
-- Ability to handle different types of cluster shapes
-
-## Conclusion
-
-The assignment demonstrates the importance of understanding both the characteristics of the data and the strengths/limitations of different clustering algorithms. By combining multiple data generation methods and evaluating various clustering approaches, we gain insights into their applicability to different types of datasets.
